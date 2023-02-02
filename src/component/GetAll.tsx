@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Aufgaben } from "./Aufgaben";
+import editTask from "./Edit";
 import axios from 'axios';
 
 const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
@@ -31,7 +32,7 @@ export default function GetAll() {
             </form>
             <ol id="alle">
                 {task.map((todo: Aufgaben) => (
-                    <li key={todo.id}>{todo.title}<button onClick={() => deleteTask(todo)}>Delete</button></li>
+                    <li key={todo.id}>{todo.title}<button onClick={() => deleteTask(todo)}>Delete</button><button onClick={() => editTask}>Edit</button></li>
                 ))}
             </ol>
         </>
