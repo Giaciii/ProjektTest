@@ -16,10 +16,9 @@ export default function GetAll() {
             return response.json(); // Json zurückbekommen
         })
         .then(function(AllDataJson:Aufgaben) {
-            all=AllDataJson;
-            console.log(all); // Ausgabe von allen
+            console.log(AllDataJson.id); // Ausgabe von allen
             //alle.innerHTML = all;
-            alle.innerHTML = all.title;
+            alle.innerHTML = AllDataJson.title;
         });
     }
     return (
