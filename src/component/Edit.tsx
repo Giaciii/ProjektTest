@@ -18,7 +18,7 @@ export default function Edit() {
         <form>
             <label>
                 Titel:
-                <input type="text" placeholder="Titel"/>
+                <input type="text" placeholder="Titel" id="titel"/>
             </label>
             <label>
                 Fertig?

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Aufgaben } from "./Aufgaben";
-import editTask from "./Edit";
 import axios from 'axios';
 
 const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
 
+export type IProps = {
+    editTask: Aufgaben;
+}
+
 export default function GetAll() {
     const [task, setTask] = useState<Aufgaben[]>([]);
-    const [taskTEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
+    const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
 
     useEffect(() => {
         loadData();
@@ -26,16 +29,11 @@ export default function GetAll() {
     }
 
     function editTask(taskToEdit: Aufgaben) {
-        let idd = taskTEdit.id;
-        setTaskToEdit(idd);
+
     }
 
     return (
-        <>
-            <form method="get">
-                <input type="submit" value="Holen" id="holen"/>
-            </form>
-            <ol id="alle">
+        <>  <ol id="alle">
                 {task.map((todo: Aufgaben) => (
                     <li key={todo.id}>{todo.title}<button onClick={() => deleteTask(todo)}>Delete</button><button onClick={() => editTask}>Edit</button></li>
                 ))}

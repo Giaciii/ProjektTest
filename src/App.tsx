@@ -3,6 +3,7 @@ import Edit from './component/Edit';
 import Get from './component/Get';
 import GetAll from './component/GetAll';
 
+const emptyTask: Task = {"title": "", "completed": false, "id":1}
 
 function App() {
   return (
@@ -10,7 +11,6 @@ function App() {
       <header className="App-header">
         <Get />
         <GetAll />
-        <Edit />
       </header>
     </div>
   );
