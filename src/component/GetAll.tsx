@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Aufgaben } from "./Aufgaben";
 import axios from 'axios';
 
+const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
+
 export default function GetAll() {
     const [task, setTask] = useState<Aufgaben[]>([]);
+    const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
 
     useEffect(() => {
         loadData();
     }, []);
 
     function loadData() {
-        axios.get<Aufgaben[]>('http://localhost:3001/tasks').then((response) => {
+        axios.get<Aufgaben[]>("http://localhost:3001/tasks").then((response) => {
             setTask(response.data);
         });
     }
@@ -28,7 +31,7 @@ export default function GetAll() {
             </form>
             <ol id="alle">
                 {task.map((todo: Aufgaben) => (
-                    <li>{todo.title} <button onClick={() => deleteTask(todo)}>Delete</button></li>
+                    <li key={todo.id}>{todo.title}<button onClick={() => deleteTask(todo)}>Delete</button></li>
                 ))}
             </ol>
         </>
