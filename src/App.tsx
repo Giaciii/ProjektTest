@@ -28,6 +28,12 @@ function App() {
       });
   }
 
+  function getTask(taskToGet: Task) {
+    axios.get("http://localhost:3001/task/"+taskToGet.id).then(() => {
+        loadData();
+    });
+  }
+
   function deleteTask(taskToDelete: Task) {
       axios.delete("http://localhost:3001/task/"+taskToDelete.id).then(() => {
           loadData();
@@ -35,8 +41,9 @@ function App() {
   }
 
   function saveTask(taskToSave : Task) {
-    axios.post("http://localhost:3001/task", taskToSave).then(() => {
+    axios.post("http://localhost:3001/tasks", taskToSave).then(() => {
       loadData();
+      setTaskToEdit(taskToSave);
     });
   }
 
@@ -54,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Get />
+        <Get taskToGet={}/>
         <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
         <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>

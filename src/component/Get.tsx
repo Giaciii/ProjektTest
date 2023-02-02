@@ -1,6 +1,14 @@
 import React from "react";
+import { Task } from "../App";
 
-export default function Get() {
+const emptyTask: Task = {"title": "", "completed": false, "id": 0};
+
+export interface IPropsGet {
+    tasks: Task[];
+    getTask: (task:Task) => void;
+}
+
+export default function Get(props: IPropsGet) {
 
     let data = '';
     
@@ -17,7 +25,7 @@ export default function Get() {
             console.log(data); // Ausgabe des Einzelnen
             dataDiv.innerHTML = data;
         });*/
-
+        /*
         fetch(`http://localhost:3001/task/${valuegetID}`) // Fetchen
         .then(function(response) {
             return response.json();
@@ -31,7 +39,7 @@ export default function Get() {
             const node = document.createTextNode(i);
             li.appendChild(node);
             dataDiv.appendChild(li);
-        });
+        });*/
 
     }
 
@@ -40,8 +48,10 @@ export default function Get() {
             <form method="get">
                 <input type="text" name="getD" id="getD"/>
                 <input type="submit" value="Holen" id="holen" onClick={holen}/>
-                <ol id="dataDiv"></ol>
             </form>
+            <ol>
+                <li key={todo.id}>{todo.title}</li>
+            </ol>
         </>
     )
 }
