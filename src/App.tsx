@@ -4,6 +4,7 @@ import './App.css';
 import Edit from './component/Edit';
 import Get from './component/Get';
 import GetAll from './component/GetAll';
+import Post from './component/Post';
 
 const emptyTask: Task = {"title": "", "completed": false, "id":1}
 
@@ -33,18 +34,30 @@ function App() {
       });
   }
 
+  function saveTask(taskToSave : Task) {
+    axios.post("http://localhost:3001/task").then(() => {
+      loadData();
+    });
+  }
+
   function editTask(taskToEdit: Task) {
       axios.put("http://localhost:3001/tasks", taskToEdit).then(() => {
           loadData();
+          setTaskToEdit(emptyTask);
       });
   }
   
+  function taskEdit(task : Task) {
+      setTaskToEdit(task);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <Get />
-        <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
-        <GetAll tasks={task} deleteTask={deleteTask} editTask={editTask}/>
+        <Post tasksP={task} safeTaskP={taskToSave}/>
+        <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
+        <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
       </header>
     </div>
   );

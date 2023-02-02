@@ -25,6 +25,7 @@ export default function Edit(props: IProps) {
 
     return(
         <>
+        Title: {props.taskToEdit.title}
         <form onSubmit={onFormSubmit}>
             <label>
                 Titel:
