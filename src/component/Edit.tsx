@@ -1,18 +1,33 @@
 import axios from "axios";
-import { useState } from "react";
-import { Aufgaben } from "./Aufgaben";
-import loadData from "./GetAll";
+import React, { useEffect, useState } from "react";
+import { Task } from "../App";
 
-const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
+export interface IProps  {
+    taskToEdit: Task;
+    taskEdited: (editedTask: Task) => void;
+}
 
-export default function Edit() {
-    const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
+const emptyTask: Task = {"title": "", "completed": false, "id": 0};
 
-    function update() {
-        axios.put("http://localhost:3001/task/"+taskToEdit.id).then(() => {
-            loadData();
-        });
+export default function Edit(props: IProps) {
+    const [formData, setFormData] = useState<Task>(props.taskToEdit ?? emptyTask);
+
+    useEffect(() => setFormData(props.taskToEdit), [props]);
+
+    function onChange(event : React.ChangeEvent<HTMLInputElement>) {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]: value});
     }
+
+    function onFormSubmit(event : React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        props.taskEdited(formData);
+    }
+
+    const update = () => {
+        axios
+    }
+
     return(
         <>
         <form>

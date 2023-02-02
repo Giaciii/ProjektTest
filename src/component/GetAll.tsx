@@ -1,41 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Aufgaben } from "./Aufgaben";
-import axios from 'axios';
+import { Task } from "../App";
 
-const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
+const emptyTask: Task = {"title": "", "completed": false, "id": 0};
 
-export type IProps = {
-    editTask: Aufgaben;
+export interface IPropsGetAll {
+    tasks: Task[];
+    deleteTask: (task:Task) => void;
+    editTask: (task:Task) => void;
 }
 
-export default function GetAll() {
-    const [task, setTask] = useState<Aufgaben[]>([]);
-    const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
-
-    useEffect(() => {
-        loadData();
-    }, []);
-
-    function loadData() {
-        axios.get<Aufgaben[]>("http://localhost:3001/tasks").then((response) => {
-            setTask(response.data);
-        });
-    }
-
-    function deleteTask(taskToDelete: Aufgaben) {
-        axios.delete("http://localhost:3001/task/"+taskToDelete.id).then(() => {
-            loadData();
-        });
-    }
-
-    function editTask(taskToEdit: Aufgaben) {
-
-    }
+export default function GetAll(props: IPropsGetAll) {
 
     return (
         <>  <ol id="alle">
-                {task.map((todo: Aufgaben) => (
-                    <li key={todo.id}>{todo.title}<button onClick={() => deleteTask(todo)}>Delete</button><button onClick={() => editTask}>Edit</button></li>
+                {props.tasks.map((todo: Task) => (
+                    <li key={todo.id}>{todo.title}<button onClick={() => props.deleteTask(todo)}>Delete</button><button onClick={() => props.editTask(todo)}>Edit</button></li>
                 ))}
             </ol>
         </>
