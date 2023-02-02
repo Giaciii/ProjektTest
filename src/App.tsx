@@ -61,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Get taskToGet={task} getTask={getTask}/>
+        <Get taskToGet={taskToEdit} getTask={getTask}/>
         <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
         <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
