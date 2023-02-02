@@ -1,6 +1,7 @@
 import './App.css';
 import Get from './component/Get';
 import GetAll from './component/GetAll';
+import Post from './component/Post';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <Get />
         <GetAll />
+        <Post /> 
       </header>
     </div>
   );

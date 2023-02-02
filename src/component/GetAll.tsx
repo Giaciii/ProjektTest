@@ -3,38 +3,30 @@ import { Aufgaben } from "./Aufgaben";
 import axios from 'axios';
 
 export default function GetAll() {
+    const [task, setTask] = useState<Aufgaben[]>([]);
 
     let all = '';
-    
-    function alle(e: React.FormEvent) {
-        let alle = document.getElementById('alle') as HTMLElement;
-        const [tasks, setTasks]=useState([]);
+    let alles = document.getElementById('alle') as HTMLElement;
 
-        e.preventDefault();
-        /*
-        fetch('http://localhost:3001/tasks') // Alles Fetchen
-        .then(function(response) {
-            return response.json(); // Json zurückbekommen
+    useEffect(() => {
+        axios.get<Aufgaben[]>('http://localhost:3001/tasks').then((response) => {
+            setTask(response.data);
         })
-        .then(function(AllDataJson:Aufgaben) {
-            console.log(AllDataJson); // Ausgabe von allen
-            //alle.innerHTML = all;
-            alle.innerHTML = AllDataJson.title;
-        });*/
+    })
 
-        const fetchData = () => {
-        return axios.get('localhost:3001/tasks').then((response) => setTasks(response.data));
-        }
-        useEffect(() => {
-            fetchData();
-        },[]);
+    function deleteTask(taskToDelete: Aufgaben) {
+        axios.delete("http://localhost:3001/tasks"+taskToDelete.id);
     }
+
     return (
         <>
             <form method="get">
-                <input type="submit" value="Holen" id="holen" onClick={alle}/>
+                <input type="submit" value="Holen" id="holen"/>
             </form>
             <ol id="alle">
+                {task.map((todo: Aufgaben) => (
+                    <li>{todo.title}</li>
+                ))}
             </ol>
         </>
     )
