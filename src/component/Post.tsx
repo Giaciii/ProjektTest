@@ -18,15 +18,15 @@ export default function Post(props: IPropsPost) {
         setHin({...hin, [name]:value});
     }
 
-    function onFormSend(event : React.FormEvent<HTMLFormElement>) {
+    function onFormSend(event : React.FormEvent<HTMLButtonElement>) {
         event.preventDefault();
         props.TaskSaved(hin);
     }
 
     return (
-        <form onSubmit={onFormSend}>
+        <form>
             <input type="text" placeholder="Titel" id="title" name="title" onChange={onInputChangeP}/>
-            <input type="submit" value="Hinzufügen" id="hinz"/>
+            <button type="submit" value="Hinzufügen" id="hinz" onClick={onFormSend} className="green">Hinzufügen</button>
         </form>
     )
 }

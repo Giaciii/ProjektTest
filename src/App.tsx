@@ -44,6 +44,7 @@ function App() {
     axios.post("http://localhost:3001/tasks", taskToSave).then(() => {
       loadData();
       setTaskToEdit(taskToSave);
+      setTaskToEdit(emptyTask);
     });
   }
 
@@ -57,15 +58,12 @@ function App() {
   function taskEdit(task : Task) {
       setTaskToEdit(task);
   }
-
+// <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
   return (
     <div className="App">
-      <header className="App-header">
-        <Get taskToGet={taskToEdit} getTask={getTask}/>
         <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
         <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
-      </header>
     </div>
   );
 }

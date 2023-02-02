@@ -32,11 +32,7 @@ export default function Edit(props: IProps) {
                 <input type="text" name="title" id="titel" value={formData.title} onChange={onInputChange}/>
             </label>
             <label>
-                Fertig?
-                <input type="checkbox"/>
-            </label>
-            <label>
-                <button>Speichern</button>
+                <button className="green">Speichern</button>
             </label>
         </form>
         </>
