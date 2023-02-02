@@ -7,6 +7,7 @@ const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
 
 export default function GetAll() {
     const [task, setTask] = useState<Aufgaben[]>([]);
+    const [taskTEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
 
     useEffect(() => {
         loadData();
@@ -22,6 +23,11 @@ export default function GetAll() {
         axios.delete("http://localhost:3001/task/"+taskToDelete.id).then(() => {
             loadData();
         });
+    }
+
+    function editTask(taskToEdit: Aufgaben) {
+        let idd = taskTEdit.id;
+        setTaskToEdit(idd);
     }
 
     return (

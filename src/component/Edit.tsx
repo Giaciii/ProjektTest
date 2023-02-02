@@ -7,21 +7,27 @@ const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
 
 export default function Edit() {
     const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
-    
-    function editTask(taskToEdit: Aufgaben) {
+
+    function update() {
         axios.put("http://localhost:3001/task/"+taskToEdit.id).then(() => {
             loadData();
-            
         });
     }
     return(
         <>
-            <div>
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-            </div>
+        <form>
+            <label>
+                Titel:
+                <input type="text" placeholder="Titel"/>
+            </label>
+            <label>
+                Fertig?
+                <input type="checkbox" />
+            </label>
+            <label>
+                <input type="submit" value="Speichern" onClick={update}/>
+            </label>
+        </form>
         </>
     )
 }
