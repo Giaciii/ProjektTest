@@ -9,7 +9,6 @@ export interface IPropsGetAll {
 }
 
 export default function GetAll(props: IPropsGetAll) {
-
     return (
         <>  <ol id="alle">
                 {props.tasks.map((todo: Task) => (

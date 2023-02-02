@@ -35,7 +35,7 @@ function App() {
   }
 
   function saveTask(taskToSave : Task) {
-    axios.post("http://localhost:3001/task").then(() => {
+    axios.post("http://localhost:3001/task", taskToSave).then(() => {
       loadData();
     });
   }
@@ -55,7 +55,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Get />
-        <Post tasksP={task} safeTaskP={taskToSave}/>
+        <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
         <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
       </header>
