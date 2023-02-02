@@ -61,3 +61,9 @@ tr {
 #alle {
   margin-left: 50px;
 }
+
+.inpu {
+  border: 2px solid blue;
+  border-radius: 10px;
+  padding: 5px;
+}

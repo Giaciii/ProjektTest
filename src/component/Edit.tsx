@@ -29,7 +29,7 @@ export default function Edit(props: IProps) {
         <form onSubmit={onFormSubmit}>
             <label>
                 Titel:
-                <input type="text" name="title" id="titel" value={formData.title} onChange={onInputChange}/>
+                <input type="text" name="title" id="titel" value={formData.title} onChange={onInputChange} className="inpu"/>
             </label>
             <label>
                 <button className="green">Speichern</button>

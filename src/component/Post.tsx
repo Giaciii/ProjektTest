@@ -25,7 +25,10 @@ export default function Post(props: IPropsPost) {
 
     return (
         <form>
-            <input type="text" placeholder="Titel" id="title" name="title" onChange={onInputChangeP}/>
+            <label>
+                <p>Neuer Auftrag:</p>
+                <input type="text" placeholder="Titel" id="title" name="title" onChange={onInputChangeP} className="inpu"/>
+            </label>
             <button type="submit" value="Hinzufügen" id="hinz" onClick={onFormSend} className="green">Hinzufügen</button>
         </form>
     )
