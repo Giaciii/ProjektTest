@@ -17,9 +17,8 @@ export default function GetAll() {
 
     function deleteTask(taskToDelete: Aufgaben) {
         axios.delete("http://localhost:3001/task/"+taskToDelete.id).then(() => {
-            
+            loadData();
         });
-    
     }
 
     return (
