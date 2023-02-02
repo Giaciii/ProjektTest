@@ -10,15 +10,15 @@ export default function GetAll() {
 
         e.preventDefault();
         fetch('http://localhost:3001/tasks') // Alles Fetchen
-        .then(function(response:any) {
-            let data = response.json;
-            console.log(data.id);
+        .then(function(response) {
             return response.json(); // Json zurückbekommen
         })
         .then(function(AllDataJson:Aufgaben) {
-            console.log(AllDataJson.id); // Ausgabe von allen
+            let obj = new Aufgaben(AllDataJson.id, AllDataJson.title, AllDataJson.completed);
+
+            console.log(AllDataJson); // Ausgabe von allen
             //alle.innerHTML = all;
-            alle.innerHTML = AllDataJson.title;
+            alle.innerHTML = obj;
         });
     }
     return (
