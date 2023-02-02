@@ -4,19 +4,18 @@ import { Task } from "../App";
 const emptyTask: Task = {"title": "", "completed": false, "id": 0};
 
 export interface IPropsGet {
-    tasks: Task[];
+    taskToGet: Task[];
     getTask: (task:Task) => void;
 }
 
 export default function Get(props: IPropsGet) {
-
-    let data = '';
+    //let data = '';
     
-    function holen(e: React.FormEvent) {
-        let dataDiv:any = document.getElementById('dataDiv') as HTMLElement;
+    //function holen(e: React.FormEvent) {
+        /*let dataDiv:any = document.getElementById('dataDiv') as HTMLElement;
         e.preventDefault();
         let getID = document.getElementById('getD') as HTMLInputElement;
-        let valuegetID = getID.value; // Value von getD holen
+        let valuegetID = getID.value; // Value von getD holen*/
 
         /*fetch(`http://localhost:3001/task/${valuegetID}`) // Fetchen
         .then((response) => response.json())
@@ -41,13 +40,18 @@ export default function Get(props: IPropsGet) {
             dataDiv.appendChild(li);
         });*/
 
-    }
+   // }
 
+   function onFormSubmit(event : React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    props.getTask(formData);
+    }
+    
     return (
         <>
-            <form method="get">
+            <form onSubmit={onFormSubmit}>
                 <input type="text" name="getD" id="getD"/>
-                <input type="submit" value="Holen" id="holen" onClick={holen}/>
+                <input type="submit" value="Holen" id="holen"/>
             </form>
             <ol>
                 <li key={todo.id}>{todo.title}</li>
