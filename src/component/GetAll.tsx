@@ -7,7 +7,6 @@ const emptyTask: Aufgaben = {"title": "", "completed": false, "id": 0};
 
 export default function GetAll() {
     const [task, setTask] = useState<Aufgaben[]>([]);
-    const [taskToEdit, setTaskToEdit] = useState<Aufgaben>(emptyTask);
 
     useEffect(() => {
         loadData();

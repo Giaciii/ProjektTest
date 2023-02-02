@@ -1,4 +1,6 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Edit from './component/Edit';
 import Get from './component/Get';
 import GetAll from './component/GetAll';
 import Post from './component/Post';
@@ -9,7 +11,7 @@ function App() {
       <header className="App-header">
         <Get />
         <GetAll />
-        <Post /> 
+        <Post />
       </header>
     </div>
   );
