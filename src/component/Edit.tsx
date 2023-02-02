@@ -1,9 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Task } from "../App";
 
 export interface IProps  {
-    taskToEdit: Task;
+    taskToEdit: Task,
     taskEdited: (editedTask: Task) => void;
 }
 
@@ -14,9 +13,9 @@ export default function Edit(props: IProps) {
 
     useEffect(() => setFormData(props.taskToEdit), [props]);
 
-    function onChange(event : React.ChangeEvent<HTMLInputElement>) {
+    function onInputChange(event : React.ChangeEvent<HTMLInputElement>) {
         const {name, value} = event.target;
-        setFormData({...formData, [name]: value});
+        setFormData({...formData, [name]:value});
     }
 
     function onFormSubmit(event : React.FormEvent<HTMLFormElement>) {
@@ -24,23 +23,19 @@ export default function Edit(props: IProps) {
         props.taskEdited(formData);
     }
 
-    const update = () => {
-        axios
-    }
-
     return(
         <>
-        <form>
+        <form onSubmit={onFormSubmit}>
             <label>
                 Titel:
-                <input type="text" placeholder="Titel" id="titel"/>
+                <input type="text" name="title" id="titel" value={formData.title} onChange={onInputChange}/>
             </label>
             <label>
                 Fertig?
-                <input type="checkbox" />
+                <input type="checkbox"/>
             </label>
             <label>
-                <input type="submit" value="Speichern" onClick={update}/>
+                <button>Speichern</button>
             </label>
         </form>
         </>

@@ -34,7 +34,7 @@ function App() {
   }
 
   function editTask(taskToEdit: Task) {
-      axios.put("http://localhost:3001/task/"+taskToEdit.id).then(() => {
+      axios.put("http://localhost:3001/tasks", taskToEdit).then(() => {
           loadData();
       });
   }
@@ -43,6 +43,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Get />
+        <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
         <GetAll tasks={task} deleteTask={deleteTask} editTask={editTask}/>
       </header>
     </div>

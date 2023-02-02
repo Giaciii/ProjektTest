@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Task } from "../App";
 
 const emptyTask: Task = {"title": "", "completed": false, "id": 0};
