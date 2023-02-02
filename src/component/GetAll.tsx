@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Aufgaben } from "./Aufgaben";
+import axios from 'axios';
 
 export default function GetAll() {
 
@@ -7,19 +8,26 @@ export default function GetAll() {
     
     function alle(e: React.FormEvent) {
         let alle = document.getElementById('alle') as HTMLElement;
+        const [tasks, setTasks]=useState([]);
 
         e.preventDefault();
+        /*
         fetch('http://localhost:3001/tasks') // Alles Fetchen
         .then(function(response) {
             return response.json(); // Json zurückbekommen
         })
         .then(function(AllDataJson:Aufgaben) {
-            let obj = new Aufgaben(AllDataJson.id, AllDataJson.title, AllDataJson.completed);
-
             console.log(AllDataJson); // Ausgabe von allen
             //alle.innerHTML = all;
-            alle.innerHTML = obj;
-        });
+            alle.innerHTML = AllDataJson.title;
+        });*/
+
+        const fetchData = () => {
+        return axios.get('localhost:3001/tasks').then((response) => setTasks(response.data));
+        }
+        useEffect(() => {
+            fetchData();
+        },[]);
     }
     return (
         <>
