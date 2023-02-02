@@ -26,10 +26,12 @@ export default function Post(props: IPropsPost) {
     return (
         <form>
             <label>
-                <p>Neuer Auftrag:</p>
-                <input type="text" placeholder="Titel" id="title" name="title" onChange={onInputChangeP} className="inpu"/>
+                <p className="dick">Neuer Auftrag:</p>
+                <input type="text" placeholder="Titel" id="title" name="title" onChange={onInputChangeP} className="inpu" required/>
             </label>
-            <button type="submit" value="Hinzufügen" id="hinz" onClick={onFormSend} className="green">Hinzufügen</button>
+            <label>
+                <button type="submit" value="Hinzufügen" id="hinz" onClick={onFormSend} className="green">Hinzufügen</button>
+            </label>
         </form>
     )
 }

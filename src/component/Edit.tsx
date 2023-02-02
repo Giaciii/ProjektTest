@@ -25,11 +25,11 @@ export default function Edit(props: IProps) {
 
     return(
         <>
-        Title: {props.taskToEdit.title}
         <form onSubmit={onFormSubmit}>
             <label>
-                Titel:
-                <input type="text" name="title" id="titel" value={formData.title} onChange={onInputChange} className="inpu"/>
+                <p className="dick">Titel:</p>
+                <p className="zurzeit">Zurzeit: "{props.taskToEdit.title}"</p>
+                <input type="text" name="title" id="titel" placeholder="Auftrag auswählen" value={formData.title} onChange={onInputChange} className="inpu"/>
             </label>
             <label>
                 <button className="green">Speichern</button>
