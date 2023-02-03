@@ -6,7 +6,6 @@ import { UserCon } from "./State/State";
 
 //const emptyLogin: Login = { "email": "", "password": "" };
 
-
 export default function LoginF() {
     const { Auth, setAuth } = useContext(UserCon);
 
