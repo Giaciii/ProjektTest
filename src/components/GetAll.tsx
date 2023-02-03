@@ -1,6 +1,6 @@
 import { Task } from "../App";
 
-const emptyTask: Task = { "title": "", "completed": false, "id": 0 };
+//const emptyTask: Task = { "title": "", "completed": false, "id": 0 };
 
 export interface IPropsGetAll {
     tasks: Task[];

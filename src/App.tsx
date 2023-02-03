@@ -2,14 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Edit from './components/Edit';
-import Get from './components/Get';
 import GetAll from './components/GetAll';
 import Login from './components/LoginF';
 import Post from './components/Post';
 import { UserCon } from './components/State/State';
 
 const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
-const emptyLogin: Login = { "email": "", "password": "" };
 
 export type Task = {
   id: number,
@@ -36,11 +34,12 @@ function App() {
     });
   }
 
+  /*
   function getTask(taskToGet: Task) {
     axios.get("http://localhost:3001/task/" + taskToGet.id).then(() => {
       loadData();
     });
-  }
+  }*/
 
   function deleteTask(taskToDelete: Task) {
     axios.delete("http://localhost:3001/task/" + taskToDelete.id).then(() => {

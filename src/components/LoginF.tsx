@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Login } from "../App";
 import { UserCon } from "./State/State";
 
-const emptyLogin: Login = { "email": "", "password": "" };
+//const emptyLogin: Login = { "email": "", "password": "" };
 
 
 export default function LoginF() {
@@ -29,7 +29,7 @@ export default function LoginF() {
 
     function onFormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        let data = Object.fromEntries(new FormData(document.getElementById('formLogin') as HTMLFormElement));
+        const data = Object.fromEntries(new FormData(document.getElementById('formLogin') as HTMLFormElement));
         toLogin(data as Login);
     }
 
