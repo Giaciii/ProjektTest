@@ -39,7 +39,7 @@ export default function LoginF() {
             <p className="dick">Login</p>
             <label>
                 Email:
-                <input type="email" id="email" name="email" required className="inpu" placeholder="E-Mail" />
+                <input type="email" id="email" name="email" className="inpu" placeholder="E-Mail" required />
             </label>
             <label>
                 Passwort:
