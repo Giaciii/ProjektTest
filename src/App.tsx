@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
-import Edit from './component/Edit';
-import Get from './component/Get';
-import GetAll from './component/GetAll';
-import Login from './component/LoginF';
-import Post from './component/Post';
-import { UserCon } from './component/State';
+import Edit from './components/Edit';
+import Get from './components/Get';
+import GetAll from './components/GetAll';
+import Login from './components/LoginF';
+import Post from './components/Post';
+import { UserCon } from './components/State/State';
 
 const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
 const emptyLogin: Login = { "email": "", "password": "" };
