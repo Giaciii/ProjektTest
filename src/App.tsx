@@ -82,7 +82,7 @@ function App() {
       loadData();
     });
   }
-
+/* Erweiterung für Anmeldung
   function editTaskA(taskToEditA: TaskA) {
     axios.put("http://localhost:3001/tasks", taskToEditA).then(() => {
       loadData();
@@ -92,7 +92,7 @@ function App() {
 
   function taskEditA(task: TaskA) {
     setTaskToEdit(task);
-  }
+  }*/
 
   const router = createBrowserRouter([
     {

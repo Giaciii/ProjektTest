@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { TaskA } from "../../App";
 
 export interface IPropsGetAll {
@@ -8,10 +7,11 @@ export interface IPropsGetAll {
 }
 
 export default function Home(props: IPropsGetAll) {
-    const [Auth, setAuth] = useState<string | null>(null);
+    // Für Anmeldung
+    /*const [Auth, setAuth] = useState<string | null>(null);
     const setAuthS = (Auth: string | null) => {
       setAuth(Auth);
-    }
+    }*/
 
     //let value={ Auth: Auth, setAuth: setAuthS };
 
