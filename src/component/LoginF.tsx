@@ -12,7 +12,7 @@ export default function LoginF() {
     function toLogin(login : Login) {
         axios.post("http://localhost:3001/auth/jwt/sign", login, {
             headers: {
-                Authorization: `Bearer ${Auth}`
+                Authorization: `Bearer ${Auth}` //Mithilfe von L
             }
         })
         .then((res) => {
