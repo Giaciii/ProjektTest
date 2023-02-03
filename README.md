@@ -1,6 +1,6 @@
 # ReactApp aufsetzten
 
-Als erstes im Backend **vor** dem Start, den Port im **server.ts** file auf **3001** setzten, dies wird benötigt, um mit dem Frontend zu komunizieren. Wenn der Serverport geändert wurde, das Backend nach der Instellation von den Node Modules mit **npm run start** starten. Danach in den Ordner **Projekttest** navigieren, danach mit einer IDE/Console z.B. VSCode (habe ich benützt) oder Intellij öffnen. In der IDE mit der Console **npm i** und **npm run start** ausführen.
+Als erstes im Backend **vor** dem Start, den Port im **server.ts** file auf **3001** setzten, dies wird benötigt, um mit dem Frontend zu komunizieren. Wenn der Serverport geändert wurde, das Backend nach der Instellation von den Node Modules mit **npm run start** starten. Danach in den Ordner **Projekttest** navigieren, danach mit einer IDE/Console z.B. VSCode (habe ich benützt) oder Intellij öffnen. In der IDE mit der Console **npm i**, **npm run start**, dazu **npm install axios** wie auch **npm install react-router-dom** ausführen.
 
 # Überprüfung
 
