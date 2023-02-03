@@ -4,6 +4,7 @@ export interface IPropsGetAll {
     tasksA: TaskA[];
     deleteTaskA: (task: TaskA) => void;
     editTaskA: (task: TaskA) => void;
+    saveTaskA: (task: TaskA) => void;
 }
 
 export default function Home(props: IPropsGetAll) {

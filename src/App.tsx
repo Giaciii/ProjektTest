@@ -76,9 +76,18 @@ function App() {
     setTaskToEdit(task);
   }
 
+  const [Auth, setAuth] = useState<string | null>(null);
+  const setAuthS = (Auth: string | null) => {
+    setAuth(Auth);
+  }
+
   //Angemeldet
   function deleteTaskA(taskToDeleteA: TaskA) {
-    axios.delete("http://localhost:3001/auth/jwt/task/" + taskToDeleteA.id).then(() => {
+    axios.delete("http://localhost:3001/auth/jwt/task/" + taskToDeleteA.id, {
+      headers: {
+        Authorization: Auth
+      }
+    }).then(() => {
       loadData();
     });
   }
@@ -92,7 +101,15 @@ function App() {
 
   function taskEditA(task: TaskA) {
     setTaskToEdit(task);
-  }*/
+  } */
+  
+  function saveTaskA(taskToSaveA: Task) {
+  axios.post("http://localhost:3001/auth/jwt/tasks", taskToSaveA).then(() => {
+    loadData();
+    setTaskToEdit(taskToSaveA);
+    setTaskToEdit(emptyTask);
+    });
+  }
 
   const router = createBrowserRouter([
     {
@@ -111,15 +128,11 @@ function App() {
     },
     {
       path: "/home",
-      element: <Home tasksA={task} deleteTaskA={deleteTaskA} editTaskA={taskEdit}/>,
+      element: <Home tasksA={task} deleteTaskA={deleteTaskA} editTaskA={taskEdit} saveTaskA={saveTaskA}/>,
       errorElement: <Error />
     }
   ]);
 
-  const [Auth, setAuth] = useState<string | null>(null);
-  const setAuthS = (Auth: string | null) => {
-    setAuth(Auth);
-  }
   // <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
   return (
     <UserCon.Provider value={{ Auth: Auth, setAuth: setAuthS }}>
