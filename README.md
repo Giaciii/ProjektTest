@@ -1,7 +1,6 @@
 # ReactApp aufsetzten
 
-In den Ordner "Projekttest" navigieren, danach mit einer IDE z.B. VSCode (habe ich benützt) oder Intellij öffnen.
-In der IDE mit der Console **npm i** und **npm run start** ausführen. Danach im Backend **vor** dem Start, den Port im **server.ts** file auf **3001** setzten, dies wird benötigt, um mit dem Frontend zu komunizieren. Wenn der Serverport geändert wurde das Backend nach der Instellation der Node Modules mit **npm run start** starten.
+Als erstes im Backend **vor** dem Start, den Port im **server.ts** file auf **3001** setzten, dies wird benötigt, um mit dem Frontend zu komunizieren. Wenn der Serverport geändert wurde das Backend nach der Instellation der Node Modules mit **npm run start** starten. Danach in den Ordner **Projekttest** vom Frontend navigieren, weiter diesen mit einer IDE/Console z.B. VSCode (habe ich benützt) oder Intellij öffnen. In der IDE mit der Console **npm i** und **npm run start** ausführen. Und die App läuft.
 
 # Überprüfung
 

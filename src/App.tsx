@@ -9,7 +9,7 @@ import Home from './components/page/Home';
 import Post from './components/Post';
 import Error from './components/page/Error';
 import { UserCon } from './components/State/State';
-
+import zliSchule from './components/img/zliSchule.jpg';
 
 const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
 
@@ -139,6 +139,7 @@ function App() {
       <div className="App">
         <RouterProvider router={router} />
       </div>
+      <img src={String(zliSchule)} alt='Zli Logo'/>
     </UserCon.Provider>
   );
 }

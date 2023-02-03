@@ -80,3 +80,10 @@ tr {
 .dick {
   font-weight: bold;
 }
+
+img {
+  width: 50px;
+  position: absolute;
+  margin-left: 90%;
+  top: 10%;
+}
