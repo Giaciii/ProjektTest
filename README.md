@@ -7,6 +7,12 @@ In der IDE mit der Console **npm run start** ausführen. Danach im Backend **vor
 
 Ich habe das Projekt noch mit ESLint überprüft und habe so alles verbessert. Ich musste wegen dem State ein Warning und ein Error dulden, da ich diese Funktion und Variable global nutzten müsste, würde ich den Anmeldeschritt implementieren.
 
+# Weitere Infos
+
+## Testfälle
+
+Ich habe die einzelnen Inputs überprüft, um herauszufinden, ob sie alles zulassen oder nur das Gewollte. Die Testergebnisse haben ergeben, dass man z.B. etwas einfügen muss, sonst kann es nicht abgeschickt werden. Weiter wurde auch bei der E-Mail überprüft, ob es überhaupt eine E-Mail ist, dies hat auch wundervoll funktioniert.
+
 # Git log
 
 Der Git log ist hier zu finden: [Git log](./git.log).
