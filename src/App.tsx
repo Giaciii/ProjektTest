@@ -8,8 +8,8 @@ import Login from './component/LoginF';
 import Post from './component/Post';
 import { UserCon } from './component/State';
 
-const emptyTask: Task = {"title": "", "completed": false, "id":1};
-const emptyLogin: Login = {"email": "", "password": ""};
+const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
+const emptyLogin: Login = { "email": "", "password": "" };
 
 export type Task = {
   id: number,
@@ -27,28 +27,28 @@ function App() {
   const [taskToEdit, setTaskToEdit] = useState<Task>(emptyTask);
 
   useEffect(() => {
-      loadData();
+    loadData();
   }, []);
 
   function loadData() {
-      axios.get<Task[]>("http://localhost:3001/tasks").then((response) => {
-          setTask(response.data);
-      });
+    axios.get<Task[]>("http://localhost:3001/tasks").then((response) => {
+      setTask(response.data);
+    });
   }
 
   function getTask(taskToGet: Task) {
-    axios.get("http://localhost:3001/task/"+taskToGet.id).then(() => {
-        loadData();
+    axios.get("http://localhost:3001/task/" + taskToGet.id).then(() => {
+      loadData();
     });
   }
 
   function deleteTask(taskToDelete: Task) {
-      axios.delete("http://localhost:3001/task/"+taskToDelete.id).then(() => {
-          loadData();
-      });
+    axios.delete("http://localhost:3001/task/" + taskToDelete.id).then(() => {
+      loadData();
+    });
   }
 
-  function saveTask(taskToSave : Task) {
+  function saveTask(taskToSave: Task) {
     axios.post("http://localhost:3001/tasks", taskToSave).then(() => {
       loadData();
       setTaskToEdit(taskToSave);
@@ -57,28 +57,28 @@ function App() {
   }
 
   function editTask(taskToEdit: Task) {
-      axios.put("http://localhost:3001/tasks", taskToEdit).then(() => {
-          loadData();
-          setTaskToEdit(emptyTask);
-      });
+    axios.put("http://localhost:3001/tasks", taskToEdit).then(() => {
+      loadData();
+      setTaskToEdit(emptyTask);
+    });
   }
-  
-  function taskEdit(task : Task) {
-      setTaskToEdit(task);
+
+  function taskEdit(task: Task) {
+    setTaskToEdit(task);
   }
 
   const [Auth, setAuth] = useState<string | null>(null);
   const setAuthS = (Auth: string | null) => {
-      setAuth(Auth);
+    setAuth(Auth);
   }
-// <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
+  // <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
   return (
-    <UserCon.Provider value={{Auth: Auth, setAuth: setAuthS}}>
+    <UserCon.Provider value={{ Auth: Auth, setAuth: setAuthS }}>
       <div className="App">
-          <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
-          <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
-          <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
-          <Login />
+        <Post taskToSave={taskToEdit} TaskSaved={saveTask} />
+        <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit} />
+        <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
+        <Login />
       </div>
     </UserCon.Provider>
   );
