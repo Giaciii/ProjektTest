@@ -10,11 +10,10 @@ export interface IPropsGetAll {
 
 export default function GetAll(props: IPropsGetAll) {
     return (
-        <>  <table id="alle">
+            <table id="alle">
                 {props.tasks.map((todo: Task) => (
                     <tr key={todo.id}><div className="divschoen">{todo.title}</div><button onClick={() => props.deleteTask(todo)} className="red">Delete</button><button onClick={() => props.editTask(todo)}>Edit</button></tr>
                 ))}
             </table>
-        </>
     )
 }

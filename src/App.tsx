@@ -4,9 +4,11 @@ import './App.css';
 import Edit from './component/Edit';
 import Get from './component/Get';
 import GetAll from './component/GetAll';
+import Login from './component/Login';
 import Post from './component/Post';
 
-const emptyTask: Task = {"title": "", "completed": false, "id":1}
+const emptyTask: Task = {"title": "", "completed": false, "id":1};
+const emptyLogin: Login = {"email": "", "password": "", "token":""};
 
 export type Task = {
   id: number,
@@ -14,9 +16,16 @@ export type Task = {
   completed: boolean;
 }
 
+export type Login {
+  email: string,
+  password: string,
+  token: string;
+}
+
 function App() {
   const [task, setTask] = useState<Task[]>([]);
   const [taskToEdit, setTaskToEdit] = useState<Task>(emptyTask);
+  const [toLogin, setToLogin] = useState<Login>;
 
   useEffect(() => {
       loadData();
@@ -64,6 +73,7 @@ function App() {
         <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
         <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
+        <Login ToLogin={}/>
     </div>
   );
 }
