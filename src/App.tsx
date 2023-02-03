@@ -10,9 +10,16 @@ import Post from './components/Post';
 import Error from './components/page/Error';
 import { UserCon } from './components/State/State';
 
+
 const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
 
 export type Task = {
+  id: number,
+  title: string,
+  completed: boolean;
+}
+
+export type TaskA = {
   id: number,
   title: string,
   completed: boolean;
@@ -69,6 +76,24 @@ function App() {
     setTaskToEdit(task);
   }
 
+  //Angemeldet
+  function deleteTaskA(taskToDeleteA: TaskA) {
+    axios.delete("http://localhost:3001/auth/jwt/task/" + taskToDeleteA.id).then(() => {
+      loadData();
+    });
+  }
+
+  function editTaskA(taskToEditA: TaskA) {
+    axios.put("http://localhost:3001/tasks", taskToEditA).then(() => {
+      loadData();
+      setTaskToEdit(emptyTask);
+    });
+  }
+
+  function taskEditA(task: TaskA) {
+    setTaskToEdit(task);
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -86,7 +111,7 @@ function App() {
     },
     {
       path: "/home",
-      element: <Home />,
+      element: <Home tasksA={task} deleteTaskA={deleteTaskA} editTaskA={taskEdit}/>,
       errorElement: <Error />
     }
   ]);

@@ -24,7 +24,7 @@ export default function LoginF() {
                 alert(err.message);
             }
         }).then (() => {
-            window.open("/home");
+            window.open("/home")
         })
     }
 
