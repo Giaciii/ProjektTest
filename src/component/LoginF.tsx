@@ -46,7 +46,7 @@ export default function LoginF() {
                 <input type="password" name="password" id="pasword" className="inpu" required placeholder="Passwort"/>
             </label>
             <label>
-                <input type="submit" value="Anmelden" />
+                <button type="submit" value="Anmelden" className="green">Anmelden</button>
             </label>
         </form>
     );
