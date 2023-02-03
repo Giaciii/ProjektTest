@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { Task } from "../App";
+import { Login } from "../App";
+
+const emptyLogin: Login = {"email": "", "password": "", "token":""};
 
 export interface IPropsLogin {
-    ToLogin: Task,
-    ToLogined: (LoginedTo: Task) => void;
+    login: Login,
+    ToLogined: (LoginedTo: Login) => void;
 }
 
-export default function Login(props : IPropsLogin) {
-    const [formData, setFormData] = useState<Task>();
+export default function LoginF(props : IPropsLogin) {
+    const [formData, setFormData] = useState<Login>(props.login ?? emptyLogin);
 
-    useEffect(() => setFormData(props.ToLogin), [props]);
+    useEffect(() => setFormData(props.login), [props]);
+
+    function onInputChange(event : React.ChangeEvent<HTMLInputElement>) {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]:value});
+    }
 
     function onFormSubmit(event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -21,7 +28,7 @@ export default function Login(props : IPropsLogin) {
             <p className="dick">Login</p>
             <label>
                 Email:
-                <input type="email" id="email" required className="inpu" placeholder="E-Mail" />
+                <input type="email" id="email" required className="inpu" placeholder="E-Mail" onChange={onInputChange}/>
             </label>
             <label>
                 Passwort:
