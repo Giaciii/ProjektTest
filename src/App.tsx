@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Edit from './components/Edit';
 import GetAll from './components/GetAll';
@@ -66,6 +67,21 @@ function App() {
     setTaskToEdit(task);
   }
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <div><a href='/user'>Login</a>
+        <Post taskToSave={taskToEdit} TaskSaved={saveTask} /> 
+        <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit} />
+        <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
+      </div>
+    },
+    {
+      path: "/user",
+      element: <Login />
+    }
+  ]);
+
   const [Auth, setAuth] = useState<string | null>(null);
   const setAuthS = (Auth: string | null) => {
     setAuth(Auth);
@@ -74,10 +90,7 @@ function App() {
   return (
     <UserCon.Provider value={{ Auth: Auth, setAuth: setAuthS }}>
       <div className="App">
-        <Post taskToSave={taskToEdit} TaskSaved={saveTask} />
-        <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit} />
-        <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
-        <Login />
+        <RouterProvider router={router} />
       </div>
     </UserCon.Provider>
   );

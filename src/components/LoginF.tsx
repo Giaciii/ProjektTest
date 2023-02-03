@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useContext } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "../App";
+import Home from "./page/Home";
 import { UserCon } from "./State/State";
 
 //const emptyLogin: Login = { "email": "", "password": "" };
@@ -9,6 +11,13 @@ import { UserCon } from "./State/State";
 export default function LoginF() {
     const { Auth, setAuth } = useContext(UserCon);
 
+    const router = createBrowserRouter([
+        {
+          path: "/",
+          element: <Home />
+        }
+      ]);
+
     function toLogin(login: Login) {
         axios.post("http://localhost:3001/auth/jwt/sign", login, {
             headers: {
@@ -16,13 +25,14 @@ export default function LoginF() {
             }
         })
             .then((res) => {
-                setAuth(res.data.token)
+                setAuth(res.data.token);
+                <RouterProvider router={router} />
             })
             .catch(err => {
                 if (err.response.status == 400) {
-                    alert(JSON.stringify(err.response.data))
+                    alert(JSON.stringify(err.response.data));
                 } else {
-                    alert(err.message)
+                    alert(err.message);
                 }
             })
     }
