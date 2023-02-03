@@ -11,7 +11,7 @@ Ich habe das Projekt noch mit ESLint überprüft und habe so alles verbessert. I
 
 ## Testfälle
 
-Ich habe die einzelnen Inputs überprüft, um herauszufinden, ob sie alles zulassen oder nur das Gewollte. Die Testergebnisse haben ergeben, dass man z.B. etwas einfügen muss, sonst kann es nicht abgeschickt werden. Weiter wurde auch bei der E-Mail überprüft, ob es überhaupt eine E-Mail ist, dies hat auch wundervoll funktioniert.
+Ich habe die einzelnen Inputs überprüft, um herauszufinden, ob sie alles zulassen oder nur das Gewollte. Die Testergebnisse haben ergeben, dass man z.B. etwas einfügen muss, sonst kann es nicht abgeschickt werden. Weiter wurde auch bei der E-Mail überprüft, ob es überhaupt eine E-Mail ist, dies hat auch wundervoll funktioniert. Das Passwort muss auch stimmen, um sich einzuloggen.
 
 # Git log
 
