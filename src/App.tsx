@@ -5,7 +5,9 @@ import './App.css';
 import Edit from './components/Edit';
 import GetAll from './components/GetAll';
 import Login from './components/LoginF';
+import Home from './components/page/Home';
 import Post from './components/Post';
+import Error from './components/page/Error';
 import { UserCon } from './components/State/State';
 
 const emptyTask: Task = { "title": "", "completed": false, "id": 1 };
@@ -74,11 +76,18 @@ function App() {
         <Post taskToSave={taskToEdit} TaskSaved={saveTask} /> 
         <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit} />
         <Edit taskToEdit={taskToEdit} taskEdited={editTask} />
-      </div>
+      </div>,
+      errorElement: <Error />
     },
     {
       path: "/user",
-      element: <Login />
+      element: <Login />,
+      errorElement: <Error />
+    },
+    {
+      path: "/home",
+      element: <Home />,
+      errorElement: <Error />
     }
   ]);
 
