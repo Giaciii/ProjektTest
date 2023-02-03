@@ -73,7 +73,7 @@ function App() {
       loadData();
       setToLogin(login);
       setToLogin(emptyLogin);
-    });
+    })
   }
 // <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
   return (
