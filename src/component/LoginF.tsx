@@ -1,41 +1,52 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Login } from "../App";
+import { UserCon } from "./State";
 
-const emptyLogin: Login = {"email": "", "password": "", "token":""};
+const emptyLogin: Login = {"email": "", "password": ""};
 
-export interface IPropsLogin {
-    login: Login,
-    ToLogined: (LoginedTo: Login) => void;
-}
 
-export default function LoginF(props : IPropsLogin) {
-    const [formData, setFormData] = useState<Login>(props.login ?? emptyLogin);
+export default function LoginF() {
+    const {Auth, setAuth} = useContext(UserCon);
 
-    useEffect(() => setFormData(props.login), [props]);
-
-    function onInputChange(event : React.ChangeEvent<HTMLInputElement>) {
-        const {name, value} = event.target;
-        setFormData({...formData, [name]:value});
-    }
+    function toLogin(login : Login) {
+        axios.post("http://localhost:3001/auth/jwt/sign", login, {
+            headers: {
+                Authorization: `Bearer ${Auth}`
+            }
+        })
+        .then((res) => {
+            setAuth(res.data.token)
+        })
+        .catch(err => {
+            if(err.response.status == 400){
+                alert(JSON.stringify(err.response.data))
+            }else{
+                alert(err.message)
+            }
+        })
+      }
 
     function onFormSubmit(event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        props.ToLogined(formData);
+        let data = Object.fromEntries(new FormData(document.getElementById('formLogin') as HTMLFormElement));
+        toLogin(data as Login);
     }
 
     return(
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} id="formLogin">
+            {Auth?'Angemeldet':'Abgemeldet'}
             <p className="dick">Login</p>
             <label>
                 Email:
-                <input type="email" id="email" required className="inpu" placeholder="E-Mail" onChange={onInputChange}/>
+                <input type="email" id="email" name="email" required className="inpu" placeholder="E-Mail"/>
             </label>
             <label>
                 Passwort:
-                <input type="password" name="pas" id="pasword" className="inpu" required placeholder="Passwort"/>
+                <input type="password" name="password" id="pasword" className="inpu" required placeholder="Passwort"/>
             </label>
             <label>
-                <input type="button" value="Abmelden" />
+                <input type="submit" value="Anmelden" />
             </label>
         </form>
     );

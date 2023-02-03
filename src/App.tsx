@@ -6,9 +6,10 @@ import Get from './component/Get';
 import GetAll from './component/GetAll';
 import Login from './component/LoginF';
 import Post from './component/Post';
+import { UserCon } from './component/State';
 
 const emptyTask: Task = {"title": "", "completed": false, "id":1};
-const emptyLogin: Login = {"email": "", "password": "", "token":""};
+const emptyLogin: Login = {"email": "", "password": ""};
 
 export type Task = {
   id: number,
@@ -18,14 +19,12 @@ export type Task = {
 
 export type Login = {
   email: string,
-  password: string,
-  token: string;
+  password: string;
 }
 
 function App() {
   const [task, setTask] = useState<Task[]>([]);
   const [taskToEdit, setTaskToEdit] = useState<Task>(emptyTask);
-  const [toLoginUse, setToLogin] = useState<Login>(emptyLogin);
 
   useEffect(() => {
       loadData();
@@ -68,21 +67,20 @@ function App() {
       setTaskToEdit(task);
   }
 
-  function toLogin(login : Login) {
-    axios.post("http://localhost:3001/auth/jwt/sign", login).then(() => {
-      loadData();
-      setToLogin(login);
-      setToLogin(emptyLogin);
-    })
+  const [Auth, setAuth] = useState<string | null>(null);
+  const setAuthS = (Auth: string | null) => {
+      setAuth(Auth);
   }
 // <Get taskToGet={taskToEdit} getTask={getTask}/> ins HTML (funktioniert nicht)
   return (
-    <div className="App">
-        <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
-        <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
-        <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
-        <Login login={toLoginUse} ToLogined={toLogin}/>
-    </div>
+    <UserCon.Provider value={{Auth: Auth, setAuth: setAuthS}}>
+      <div className="App">
+          <Post taskToSave={taskToEdit} TaskSaved={saveTask}/>
+          <GetAll tasks={task} deleteTask={deleteTask} editTask={taskEdit}/>
+          <Edit taskToEdit={taskToEdit} taskEdited={editTask}/>
+          <Login />
+      </div>
+    </UserCon.Provider>
   );
 }
 
