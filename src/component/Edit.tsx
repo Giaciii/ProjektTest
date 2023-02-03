@@ -29,7 +29,7 @@ export default function Edit(props: IProps) {
                 <p className="dick">Titel:</p>
                 <p className="zurzeit">Zurzeit: "{props.taskToEdit.title}"</p>
                 <label>
-                    <input type="text" name="title" id="titel" placeholder="Auftrag auswählen" value={formData.title} onChange={onInputChange} className="inpu" />
+                    <input type="text" name="title" id="titel" placeholder="Auftrag auswählen" value={formData.title} onChange={onInputChange} className="inpu" required />
                 </label>
                 <label>
                     <button className="green">Speichern</button>
